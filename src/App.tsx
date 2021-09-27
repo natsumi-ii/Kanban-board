@@ -26,8 +26,11 @@ export function App() {
   const [{ columns }, setData] = useState<State>({ cardsOrder: {} })
 
   useEffect(() => {
+    console.log('hogehoge')
     ;(async () => {
+      console.log('before api')
       const columns = await api('GET /v1/columns', null)
+      console.log('columns', columns)
 
       setData(
         produce((draft: State) => {
@@ -40,6 +43,9 @@ export function App() {
         api('GET /v1/cardsOrder', null),
       ])
 
+      console.log('unorderedCards', unorderedCards)
+      console.log('cardsOrder', cardsOrder)
+
       setData(
         produce((draft: State) => {
           draft.cardsOrder = cardsOrder
@@ -48,6 +54,7 @@ export function App() {
           })
         }),
       )
+
     })()
   }, [])
 
