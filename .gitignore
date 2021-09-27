@@ -1,5 +1,5 @@
 # npm
-node-modules/
+node_modules/
 
 # Parcel
 /.cache/
