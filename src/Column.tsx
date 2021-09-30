@@ -50,16 +50,22 @@ export function Column({
 
   const [draggingCardID, setDraggingCardID] = useState<string | undefined>(
     undefined,
-  )
-  const handleCardDragStart = (id: string) => {
-    setDraggingCardID(id)
-    onCardDragStart?.(id)
-  }
-
-  return (
-    <Container>
+    )
+    const handleCardDragStart = (id: string) => {
+      setDraggingCardID(id)
+      onCardDragStart?.(id)
+      
+    }
+    
+      // const [resultColor, setResultColor] = useState('')
+      // const resultHandler = {
+      //   if(cards.length === 0)
+      //   }
+      
+      return (
+        <Container>
       <Header>
-        {totalCount >= 0 && <CountBadge>{totalCount}</CountBadge>}
+        {totalCount　 >= 0 && <CountBadge>{totalCount}</CountBadge>}
         <ColumnName>{title}</ColumnName>
 
         <AddButton onClick={toggleInput} />
@@ -67,18 +73,19 @@ export function Column({
 
       {inputMode && (
         <InputForm
-          value={text}
-          onChange={onTextChange}
-          onConfirm={confirmInput}
-          onCancel={cancelInput}
+        value={text}
+        onChange={onTextChange}
+        onConfirm={confirmInput}
+        onCancel={cancelInput}
         />
-      )}
+        )}
 
       {!cards ? (
         <Loading />
-      ) : (
-        <>
-          {filterValue && <ResultCount>{cards.length} results</ResultCount>}
+        ) : (
+          <>
+          
+          {filterValue && <ResultCount><ResultNumber>{cards.length} </ResultNumber> results</ResultCount>}
 
           <VerticalScroll>
             {cards.map(({ id, text }, i) => (
@@ -176,6 +183,15 @@ const ResultCount = styled.div`
   color: ${color.Black};
   font-size: 12px;
   text-align: center;
+  
+`
+const ResultNumber = styled.span`
+  display: inline-block;
+    width: 13px;
+    height: 13px; 
+    background-color: skyblue;
+    border-radius: 50%;
+
 `
 
 const VerticalScroll = styled.div`
