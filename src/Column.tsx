@@ -157,7 +157,7 @@ const AddButton = styled.button.attrs({
   margin-left: auto;
   color: ${color.Black};
   :hover {
-    color: ${color.Blue};
+    color: ${color.Orange};
   }
 `
 
