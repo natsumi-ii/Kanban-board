@@ -5,17 +5,6 @@ import { CheckIcon, TrashIcon } from './icon'
 
 Card.DropArea = DropArea
 
-export function Card({
-  text,
-  onDragStart,
-  onDragEnd,
-  onDeleteClick,
-}: {
-  text?: string
-  onDragStart?(): void
-  onDragEnd?(): void
-  onDeleteClick?(): void
-}) {
 export function Card({ 
     text,
     onDragStart,
