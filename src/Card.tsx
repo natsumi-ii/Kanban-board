@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react'
 import styled from 'styled-components'
 import * as color from './color'
-import { CheckIcon as _CheckIcon, TrashIcon } from './icon'
+import { CheckIcon, TrashIcon } from './icon'
 
 Card.DropArea = DropArea
 
@@ -10,11 +10,13 @@ export function Card({
     onDragStart,
    onDragEnd,
    onDeleteClick,
+   onMoveClick,
  }: {
    text?: string
    onDragStart?(): void
    onDragEnd?(): void
    onDeleteClick?(): void
+   onMoveClick?(): void
      }) {
   const [drag, setDrag] = useState(false)
 
@@ -30,7 +32,7 @@ export function Card({
         setDrag(false)
       }}
     >
-      <CheckIcon />
+      <MoveButton onClick={onMoveClick} />
 
       {text?.split(/(https?:\/\/\S+)/g).map((fragment, i) =>
         i % 2 === 0 ? (
@@ -58,12 +60,18 @@ const Container = styled.div.attrs({
   background-color: ${color.White};
   cursor: move;
 `
-
-const CheckIcon = styled(_CheckIcon)`
+const MoveButton = styled.button.attrs({
+  type: 'button',
+  children: <CheckIcon />,
+})`
   position: absolute;
   top: 12px;
   left: 8px;
-  color: ${color.Green};
+  font-size: 14px;
+  color: ${color.Gray};
+  :hover {
+    color: ${color.Green};
+  }
 `
 
 const DeleteButton = styled.button.attrs({
