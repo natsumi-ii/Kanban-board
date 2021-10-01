@@ -12,6 +12,7 @@ export function Column({
   onCardDragStart,
   onCardDrop,
   onCardDeleteClick,
+  onCardMoveClick,
   text,
   onTextChange,
   onTextConfirm,
@@ -26,6 +27,7 @@ export function Column({
   onCardDragStart?(id: string): void
   onCardDrop?(entered: string | null): void
   onCardDeleteClick?(id: string): void
+  onCardMoveClick?(id: string): void
   text?: string
   onTextChange?(value: string): void
   onTextConfirm?(): void
@@ -95,6 +97,7 @@ export function Column({
                   onDragStart={() => handleCardDragStart(id)}
                   onDragEnd={() => setDraggingCardID(undefined)}
                   onDeleteClick={() => onCardDeleteClick?.(id)}
+                  onMoveClick={() => onCardMoveClick?.(id)}
                 />
               </Card.DropArea>
             ))}
@@ -157,7 +160,7 @@ const AddButton = styled.button.attrs({
   margin-left: auto;
   color: ${color.Black};
   :hover {
-    color: ${color.Blue};
+    color: ${color.Orange};
   }
 `
 

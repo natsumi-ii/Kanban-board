@@ -7,6 +7,7 @@ import { Header as _Header } from './Header'
 import { Column } from './Column'
 
 import { DeleteDialog } from './DeleteDialog'
+import { MoveDialog } from './MoveDialog'
 import { Overlay as _Overlay } from './Overlay'
 
 type State = {
@@ -27,7 +28,6 @@ export function App() {
   const [{ columns }, setData] = useState<State>({ cardsOrder: {} })
 
   useEffect(() => {
-    console.log('hogehoge')
     ;(async () => {
       console.log('before api')
       const columns = await api('GET /v1/columns', null)
@@ -43,9 +43,6 @@ export function App() {
         api('GET /v1/cards', null),
         api('GET /v1/cardsOrder', null),
       ])
-
-      console.log('unorderedCards', unorderedCards)
-      console.log('cardsOrder', cardsOrder)
 
       setData(
         produce((draft: State) => {
@@ -138,6 +135,10 @@ export function App() {
   const [deletingCardID, setDeletingCardID] = useState<string | undefined>(
     undefined,
   )
+  const [movingCardID, setMovingCardID] = useState<string | undefined>(
+    undefined,
+  )
+
   const deleteCard = () => {
     const cardID = deletingCardID
     if (!cardID) return
@@ -174,6 +175,7 @@ export function App() {
                 onCardDragStart={cardID => setDraggingCardID(cardID)}
                 onCardDrop={entered => dropCardTo(entered ?? columnID)}
                 onCardDeleteClick={cardID => setDeletingCardID(cardID)}
+                onCardMoveClick={cardID => setMovingCardID(cardID)}
                 text={text}
                 onTextChange={value => setText(columnID, value)}
                 onTextConfirm={() => addCard(columnID)}
@@ -182,6 +184,12 @@ export function App() {
           )}
         </HorizontalScroll>
       </MainArea>
+
+      {movingCardID && (
+        <Overlay onClick={() => setMovingCardID(undefined)}>
+          <MoveDialog onCancel={() => setMovingCardID(undefined)} />
+        </Overlay>
+      )}
 
       {deletingCardID && (
         <Overlay onClick={() => setDeletingCardID(undefined)}>

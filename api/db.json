@@ -2,19 +2,19 @@
   "columns": [
     {
       "id": "cXrtw5n8-FsB",
-      "title": "TODO"
+      "title": "タスク"
     },
     {
       "id": "w7DTqK1QQKTI",
-      "title": "Doing"
+      "title": "遂行中"
     },
     {
       "id": "bfrqTfEydU38",
-      "title": "Waiting"
+      "title": "保留"
     },
     {
       "id": "dfwMbxZS0EmM",
-      "title": "Done"
+      "title": "完了"
     }
   ],
   "cards": [
