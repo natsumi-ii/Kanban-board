@@ -1,7 +1,7 @@
 /**
  * ランダムな ID `[0-9A-Za-z_-]{12}` を作成する
  */
- export function randomID() {
+export function randomID() {
   const alphabet =
     '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ_abcdefghijklmnopqrstuvwxyz-'
 
@@ -22,7 +22,7 @@
  */
 export function sortBy<
   E extends { id: Exclude<V, null> },
-  V extends string | null
+  V extends string | null,
 >(list: E[], order: Record<string, V>, head: Exclude<V, null>) {
   const map = list.reduce((m, e) => m.set(e.id, e), new Map<V, E>())
 
