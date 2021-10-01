@@ -56,13 +56,6 @@ export function Column({
     onCardDragStart?.(id)
   }
 
-  // const [resultColor, setResultColor] = useState('green')
-  // const setColor = {
-  //   if(cards.length === 0) {
-  //     setResultColor('#cccccc')
-  //   }
-  // }
-
   return (
     <Container>
       <Header>
