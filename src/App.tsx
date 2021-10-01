@@ -8,7 +8,7 @@ import { Column } from './Column'
 
 import { DeleteDialog } from './DeleteDialog'
 import { MoveDialog } from './MoveDialog'
-import { Overlay, Overlay as _Overlay } from './Overlay'
+import { Overlay as _Overlay } from './Overlay'
 
 type State = {
   columns?: {
