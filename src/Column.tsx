@@ -58,6 +58,11 @@ export function Column({
     onCardDragStart?.(id)
   }
 
+  // const [resultColor, setResultColor] = useState('')
+  // const resultHandler = {
+  //   if(cards.length === 0)
+  //   }
+
   return (
     <Container>
       <Header>
@@ -80,7 +85,11 @@ export function Column({
         <Loading />
       ) : (
         <>
-          {filterValue && <ResultCount>{cards.length} results</ResultCount>}
+          {filterValue && (
+            <ResultCount>
+              <ResultNumber>{cards.length} </ResultNumber> results
+            </ResultCount>
+          )}
 
           <VerticalScroll>
             {cards.map(({ id, text }, i) => (
@@ -179,6 +188,13 @@ const ResultCount = styled.div`
   color: ${color.Black};
   font-size: 12px;
   text-align: center;
+`
+const ResultNumber = styled.span`
+  display: inline-block;
+  width: 13px;
+  height: 13px;
+  background-color: skyblue;
+  border-radius: 50%;
 `
 
 const VerticalScroll = styled.div`

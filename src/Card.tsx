@@ -5,6 +5,7 @@ import { CheckIcon, TrashIcon } from './icon'
 
 Card.DropArea = DropArea
 
+<<<<<<< HEAD
 export function Card({ 
     text,
     onDragStart,
@@ -18,6 +19,19 @@ export function Card({
    onDeleteClick?(): void
    onMoveClick?(): void
      }) {
+=======
+export function Card({
+  text,
+  onDragStart,
+  onDragEnd,
+  onDeleteClick,
+}: {
+  text?: string
+  onDragStart?(): void
+  onDragEnd?(): void
+  onDeleteClick?(): void
+}) {
+>>>>>>> efc11de4d803d7eabdfaae3eabd92bf7099af2a1
   const [drag, setDrag] = useState(false)
 
   return (
