@@ -1,37 +1,25 @@
 import React, { useState, useRef } from 'react'
 import styled from 'styled-components'
 import * as color from './color'
-import { CheckIcon, TrashIcon } from './icon'
+import { CheckIcon, TrashIcon, EditIcon } from './icon'
 
 Card.DropArea = DropArea
 
-<<<<<<< HEAD
-export function Card({ 
-    text,
-    onDragStart,
-   onDragEnd,
-   onDeleteClick,
-   onMoveClick,
- }: {
-   text?: string
-   onDragStart?(): void
-   onDragEnd?(): void
-   onDeleteClick?(): void
-   onMoveClick?(): void
-     }) {
-=======
 export function Card({
   text,
   onDragStart,
   onDragEnd,
   onDeleteClick,
+  onMoveClick,
+  onEditClick,
 }: {
   text?: string
   onDragStart?(): void
   onDragEnd?(): void
   onDeleteClick?(): void
+  onMoveClick?(): void
+  onEditClick?(): void
 }) {
->>>>>>> efc11de4d803d7eabdfaae3eabd92bf7099af2a1
   const [drag, setDrag] = useState(false)
 
   return (
@@ -58,6 +46,7 @@ export function Card({
         ),
       )}
 
+      <EditButton onClick={onEditClick} />
       <DeleteButton onClick={onDeleteClick} />
     </Container>
   )
@@ -85,6 +74,20 @@ const MoveButton = styled.button.attrs({
   color: ${color.Gray};
   :hover {
     color: ${color.Green};
+  }
+`
+const EditButton = styled.button.attrs({
+  type: 'button',
+  children: <EditIcon />,
+})`
+  position: absolute;
+  top: 10px;
+  right: 27px;
+  font-size: 18px;
+  color: ${color.Gray};
+
+  :hover {
+    color: ${color.Yellow};
   }
 `
 

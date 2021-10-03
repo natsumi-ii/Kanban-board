@@ -8,6 +8,7 @@ import { Column } from './Column'
 
 import { DeleteDialog } from './DeleteDialog'
 import { MoveDialog } from './MoveDialog'
+import { EditDialog } from './EditDialog'
 import { Overlay as _Overlay } from './Overlay'
 
 type State = {
@@ -138,6 +139,9 @@ export function App() {
   const [movingCardID, setMovingCardID] = useState<string | undefined>(
     undefined,
   )
+  const [editingCardID, setEditingCardID] = useState<string | undefined>(
+    undefined,
+  )
 
   const deleteCard = () => {
     const cardID = deletingCardID
@@ -176,6 +180,7 @@ export function App() {
                 onCardDrop={entered => dropCardTo(entered ?? columnID)}
                 onCardDeleteClick={cardID => setDeletingCardID(cardID)}
                 onCardMoveClick={cardID => setMovingCardID(cardID)}
+                onCardEditClick={cardID => setEditingCardID(cardID)}
                 text={text}
                 onTextChange={value => setText(columnID, value)}
                 onTextConfirm={() => addCard(columnID)}
@@ -188,6 +193,12 @@ export function App() {
       {movingCardID && (
         <Overlay onClick={() => setMovingCardID(undefined)}>
           <MoveDialog onCancel={() => setMovingCardID(undefined)} />
+        </Overlay>
+      )}
+
+      {editingCardID && (
+        <Overlay onClick={() => setEditingCardID(undefined)}>
+          <EditDialog onCancel={() => setEditingCardID(undefined)} />
         </Overlay>
       )}
 
