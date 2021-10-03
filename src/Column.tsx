@@ -85,7 +85,7 @@ export function Column({
         <>
           {filterValue && (
             <ResultCount>
-              <ResultNumber>{cards.length} </ResultNumber> results
+              <ResultNumber>{cards.length} </ResultNumber> <div>results</div>
             </ResultCount>
           )}
 
@@ -185,13 +185,17 @@ const ResultCount = styled.div`
   color: ${color.Black};
   font-size: 12px;
   text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 `
 const ResultNumber = styled.span`
   display: inline-block;
-  width: 13px;
-  height: 13px;
+  width: 20px;
+  height: 20px;
   background-color: skyblue;
   border-radius: 50%;
+  line-height: 20px;
 `
 
 const VerticalScroll = styled.div`
