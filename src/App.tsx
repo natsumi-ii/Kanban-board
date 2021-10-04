@@ -235,6 +235,7 @@ const HorizontalScroll = styled.div`
   width: 100%;
   height: 100%;
   overflow-x: auto;
+
   > * {
     margin-left: 16px;
     flex-shrink: 0;
@@ -243,6 +244,9 @@ const HorizontalScroll = styled.div`
     display: block;
     flex: 0 0 16px;
     content: '';
+  }
+  @media (max-width: 500px) {
+    flex-direction: column;
   }
 `
 
