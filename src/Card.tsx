@@ -22,7 +22,10 @@ export function Card({
 
   return (
     <Container
-      style={{ opacity: drag ? 0.5 : undefined }}
+      style={{
+        opacity: drag ? 0.5 : undefined,
+        borderColor: drag ? 'green' : '#AAAAAA',
+      }}
       onDragStart={() => {
         onDragStart?.()
         setDrag(true)
