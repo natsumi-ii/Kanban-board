@@ -1,6 +1,5 @@
-export type ColumnID = string & { readonly brand: unique symbol}
-export type CardID = string & { readonly brand: unique symbol}
-
+export type ColumnID = string & { readonly brand: unique symbol }
+export type CardID = string & { readonly brand: unique symbol }
 
 export type ReqAndRes = {
   'GET /v1/columns': {
@@ -28,6 +27,13 @@ export type ReqAndRes = {
       id: CardID
       text?: string
     }
+  }
+
+  'DELETE /v1/cards': {
+    req: {
+     id: CardID
+    }
+     res: {}
   }
 
   'GET /v1/cardsOrder': {
