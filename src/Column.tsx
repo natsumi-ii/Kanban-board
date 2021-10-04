@@ -13,6 +13,7 @@ export function Column({
   onCardDrop,
   onCardDeleteClick,
   onCardMoveClick,
+  onCardEditClick,
   text,
   onTextChange,
   onTextConfirm,
@@ -28,6 +29,7 @@ export function Column({
   onCardDrop?(entered: string | null): void
   onCardDeleteClick?(id: string): void
   onCardMoveClick?(id: string): void
+  onCardEditClick?(id: string): void
   text?: string
   onTextChange?(value: string): void
   onTextConfirm?(): void
@@ -57,11 +59,6 @@ export function Column({
     setDraggingCardID(id)
     onCardDragStart?.(id)
   }
-
-  // const [resultColor, setResultColor] = useState('')
-  // const resultHandler = {
-  //   if(cards.length === 0)
-  //   }
 
   return (
     <Container>
@@ -107,6 +104,7 @@ export function Column({
                   onDragEnd={() => setDraggingCardID(undefined)}
                   onDeleteClick={() => onCardDeleteClick?.(id)}
                   onMoveClick={() => onCardMoveClick?.(id)}
+                  onEditClick={() => onCardEditClick?.(id)}
                 />
               </Card.DropArea>
             ))}
