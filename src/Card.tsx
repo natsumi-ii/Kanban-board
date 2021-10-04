@@ -34,6 +34,22 @@ export function Card({
 >>>>>>> efc11de4d803d7eabdfaae3eabd92bf7099af2a1
   const [drag, setDrag] = useState(false)
 
+  // hint
+  // useStateを使う
+
+  const clickButton = e => {
+    // console.log(e.getBoundingClientRect().top) //←ブラウザ上のx,y位置を取得したい
+    console.log(e.clientX, e.clientY) //←マウス座標は取得できている
+  }
+
+
+  const test = (e) => {
+    console.log('test', e)
+    // console.log(e.getBoundingClientRect().top) //←ブラウザ上のx,y位置を取得したい
+    console.log(e.clientX, e.clientY) //←マウス座標は取得できている
+  }
+
+
   return (
     <Container
       style={{ opacity: drag ? 0.5 : undefined }}
@@ -45,7 +61,15 @@ export function Card({
         onDragEnd?.()
         setDrag(false)
       }}
+      onDrag={test}
     >
+      <div
+        style={{ position: 'absolute', top: 0, left: 0 }}
+        onClick={clickButton}
+
+      >
+        hogehoge
+      </div>
       <MoveButton onClick={onMoveClick} />
 
       {text?.split(/(https?:\/\/\S+)/g).map((fragment, i) =>
