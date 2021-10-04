@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import * as color from './color'
-import { Button, DangerButton } from './Button'
+import { Button, ConfirmButton } from './Button'
 
 export function MoveDialog({
   onConfirm,
@@ -49,7 +49,7 @@ const ButtonRow = styled.div`
   }
 `
 
-const MoveButton = styled(DangerButton).attrs({
+const MoveButton = styled(ConfirmButton).attrs({
   children: 'Move',
 })``
 
