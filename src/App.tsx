@@ -19,13 +19,13 @@ type State = {
       text?: string
     }[]
   }[]
-  cardsOrder: Record<string, CardID | ColumnID>
+  cardsOrder: Record<string, CardID | ColumnID | null>
 }
 
 export function App() {
   const dispatch = useDispatch()
   const filterValue = useSelector(state => state.filterValue)
-  const setFilterValue = (value: string) => 
+  const setFilterValue = (value: string) =>
     dispatch({
       type: 'Filter.SetFilter',
       payload: {
@@ -33,7 +33,10 @@ export function App() {
       },
     })
 
-  const [{ columns, cardsOrder }, setData] = useState<State>({ cardsOrder: {} })
+  const columns = useSelector(state => state.columns)
+  const cardsOrder = useSelector(state => state.cardsOrder)
+  // TODO ビルドを通すためだけのスタブ実装なので、ちゃんとしたものにする
+  const setData = fn => fn({ cardsOrder: {} })
 
   useEffect(() => {
     ;(async () => {
@@ -41,27 +44,27 @@ export function App() {
       const columns = await api('GET /v1/columns', null)
       console.log('columns', columns)
 
-      setData(
-        produce((draft: State) => {
-          draft.columns = columns
-        }),
-      )
+      dispatch({
+        type: 'App.SetColumns',
+        payload: {
+          columns,
+        },
+      })
 
       const [unorderedCards, cardsOrder] = await Promise.all([
         api('GET /v1/cards', null),
         api('GET /v1/cardsOrder', null),
       ])
 
-      setData(
-        produce((draft: State) => {
-          draft.cardsOrder = cardsOrder
-          draft.columns?.forEach(column => {
-            column.cards = sortBy(unorderedCards, cardsOrder, column.id)
-          })
-        }),
-      )
+      dispatch({
+        type:'App.SetCrads',
+        payload: {
+          cards: unorderedCards,
+          cardsOrder,
+        },
+      })
     })()
-  }, [])
+  }, [dispatch])
 
   const [draggingCardID, setDraggingCardID] = useState<CardID | undefined>(
     undefined,
