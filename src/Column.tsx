@@ -13,6 +13,7 @@ export function Column({
   onCardDrop,
   onCardDeleteClick,
   onCardMoveClick,
+  onCardEditClick,
   text,
   onTextChange,
   onTextConfirm,
@@ -28,6 +29,7 @@ export function Column({
   onCardDrop?(entered: string | null): void
   onCardDeleteClick?(id: string): void
   onCardMoveClick?(id: string): void
+  onCardEditClick?(id: string): void
   text?: string
   onTextChange?(value: string): void
   onTextConfirm?(): void
@@ -136,6 +138,7 @@ export function Column({
                   onDragEnd={() => setDraggingCardID(undefined)}
                   onDeleteClick={() => onCardDeleteClick?.(id)}
                   onMoveClick={() => onCardMoveClick?.(id)}
+                  onEditClick={() => onCardEditClick?.(id)}
                 />
               </Card.DropArea>
             ))}
@@ -216,6 +219,13 @@ const Loading = styled.div.attrs({
 const ResultCount = styled.div`
   font-size: 12px;
   text-align: center;
+`
+const ResultNumber = styled.span`
+  display: inline-block;
+  width: 13px;
+  height: 13px;
+  background-color: skyblue;
+  border-radius: 50%;
 `
 
 const VerticalScroll = styled.div`

@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import * as color from './color'
 import { Button, ConfirmButton } from './Button'
 
-export function MoveDialog({
+export function EditDialog({
   onConfirm,
   onCancel,
   className,
@@ -50,7 +50,7 @@ const ButtonRow = styled.div`
 `
 
 const MoveButton = styled(ConfirmButton).attrs({
-  children: 'Move',
+  children: 'Edit',
 })``
 
 const CancelButton = styled(Button).attrs({
