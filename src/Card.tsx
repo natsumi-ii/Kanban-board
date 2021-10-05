@@ -5,34 +5,26 @@ import { CheckIcon, TrashIcon } from './icon'
 
 Card.DropArea = DropArea
 
-<<<<<<< HEAD
-export function Card({ 
-    text,
-    onDragStart,
-   onDragEnd,
-   onDeleteClick,
-   onMoveClick,
- }: {
-   text?: string
-   onDragStart?(): void
-   onDragEnd?(): void
-   onDeleteClick?(): void
-   onMoveClick?(): void
-     }) {
-=======
 export function Card({
   text,
   onDragStart,
   onDragEnd,
   onDeleteClick,
+  onMoveClick
 }: {
   text?: string
   onDragStart?(): void
   onDragEnd?(): void
   onDeleteClick?(): void
+  onMoveClick?(): void
 }) {
->>>>>>> efc11de4d803d7eabdfaae3eabd92bf7099af2a1
   const [drag, setDrag] = useState(false)
+  const [coordinate, setCoordinate] = useState([])
+
+  const test = (e) => {
+    setCoordinate([e.clientX, e.clientY])
+    console.log(coordinate)
+  }
 
   return (
     <Container
@@ -45,7 +37,11 @@ export function Card({
         onDragEnd?.()
         setDrag(false)
       }}
+      onDrag={test}
     >
+
+      <Coordinates>{coordinate[0]}, {coordinate[1]}</Coordinates>
+
       <MoveButton onClick={onMoveClick} />
 
       {text?.split(/(https?:\/\/\S+)/g).map((fragment, i) =>
@@ -74,6 +70,13 @@ const Container = styled.div.attrs({
   background-color: ${color.White};
   cursor: move;
 `
+const Coordinates = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: blue;
+  `
+
 const MoveButton = styled.button.attrs({
   type: 'button',
   children: <CheckIcon />,
