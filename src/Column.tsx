@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import * as color from './color'
 import { Card } from './Card'
@@ -13,6 +13,7 @@ export function Column({
   onCardDrop,
   onCardDeleteClick,
   onCardMoveClick,
+  onCardEditClick,
   text,
   onTextChange,
   onTextConfirm,
@@ -28,6 +29,7 @@ export function Column({
   onCardDrop?(entered: string | null): void
   onCardDeleteClick?(id: string): void
   onCardMoveClick?(id: string): void
+  onCardEditClick?(id: string): void
   text?: string
   onTextChange?(value: string): void
   onTextConfirm?(): void
@@ -58,10 +60,15 @@ export function Column({
     onCardDragStart?.(id)
   }
 
-  // const [resultColor, setResultColor] = useState('')
-  // const resultHandler = {
-  //   if(cards.length === 0)
-  //   }
+  const getColor = length => {
+    if (length === 0) {
+      return '#cccccc'
+    } else if (length === 1) {
+      return 'black'
+    } else {
+      return 'green'
+    }
+  }
 
   return (
     <Container>
@@ -85,12 +92,12 @@ export function Column({
         <Loading />
       ) : (
         <>
+          {' '}
           {filterValue && (
-            <ResultCount>
-              <ResultNumber>{cards.length} </ResultNumber> results
+            <ResultCount style={{ color: getColor(cards.length) }}>
+              {cards.length} results
             </ResultCount>
           )}
-
           <VerticalScroll>
             {cards.map(({ id, text }, i) => (
               <Card.DropArea
@@ -107,6 +114,7 @@ export function Column({
                   onDragEnd={() => setDraggingCardID(undefined)}
                   onDeleteClick={() => onCardDeleteClick?.(id)}
                   onMoveClick={() => onCardMoveClick?.(id)}
+                  onEditClick={() => onCardEditClick?.(id)}
                 />
               </Card.DropArea>
             ))}
@@ -185,7 +193,6 @@ const Loading = styled.div.attrs({
 `
 
 const ResultCount = styled.div`
-  color: ${color.Black};
   font-size: 12px;
   text-align: center;
 `
