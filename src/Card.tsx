@@ -5,7 +5,6 @@ import { CheckIcon, TrashIcon } from './icon'
 
 Card.DropArea = DropArea
 
-<<<<<<< HEAD
 export function Card({ 
     text,
     onDragStart,
@@ -19,35 +18,22 @@ export function Card({
    onDeleteClick?(): void
    onMoveClick?(): void
      }) {
-=======
-export function Card({
-  text,
-  onDragStart,
-  onDragEnd,
-  onDeleteClick,
-}: {
-  text?: string
-  onDragStart?(): void
-  onDragEnd?(): void
-  onDeleteClick?(): void
-}) {
->>>>>>> efc11de4d803d7eabdfaae3eabd92bf7099af2a1
   const [drag, setDrag] = useState(false)
 
   // hint
   // useStateを使う
 
-  const clickButton = e => {
-    // console.log(e.getBoundingClientRect().top) //←ブラウザ上のx,y位置を取得したい
-    console.log(e.clientX, e.clientY) //←マウス座標は取得できている
-  }
+  // const clickButton = e => {
+  //   // console.log(e.getBoundingClientRect().top) //←ブラウザ上のx,y位置を取得したい
+  //   console.log(e.clientX, e.clientY) //←マウス座標は取得できている
+  // }
 
 
-  const test = (e) => {
-    console.log('test', e)
-    // console.log(e.getBoundingClientRect().top) //←ブラウザ上のx,y位置を取得したい
-    console.log(e.clientX, e.clientY) //←マウス座標は取得できている
-  }
+  // const test = (e) => {
+  //   console.log('test', e)
+  //   // console.log(e.getBoundingClientRect().top) //←ブラウザ上のx,y位置を取得したい
+  //   console.log(e.clientX, e.clientY) //←マウス座標は取得できている
+  // }
 
 
   return (
@@ -61,11 +47,11 @@ export function Card({
         onDragEnd?.()
         setDrag(false)
       }}
-      onDrag={test}
+      // onDrag={test}
     >
       <div
         style={{ position: 'absolute', top: 0, left: 0 }}
-        onClick={clickButton}
+        // onClick={clickButton}
 
       >
         hogehoge
