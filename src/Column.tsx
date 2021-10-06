@@ -58,11 +58,6 @@ export function Column({
     onCardDragStart?.(id)
   }
 
-  // const [resultColor, setResultColor] = useState('')
-  // const resultHandler = {
-  //   if(cards.length === 0)
-  //   }
-
   return (
     <Container>
       <Header>

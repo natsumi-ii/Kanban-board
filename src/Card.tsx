@@ -10,7 +10,7 @@ export function Card({
   onDragStart,
   onDragEnd,
   onDeleteClick,
-  onMoveClick
+  onMoveClick,
 }: {
   text?: string
   onDragStart?(): void
@@ -19,9 +19,9 @@ export function Card({
   onMoveClick?(): void
 }) {
   const [drag, setDrag] = useState(false)
-  const [coordinate, setCoordinate] = useState([])
+  const [coordinate, setCoordinate] = useState([0, 0])
 
-  const test = (e) => {
+  const test = e => {
     setCoordinate([e.clientX, e.clientY])
     console.log(coordinate)
   }
@@ -39,8 +39,9 @@ export function Card({
       }}
       onDrag={test}
     >
-
-      <Coordinates>{coordinate[0]}, {coordinate[1]}</Coordinates>
+      <Coordinates>
+        {coordinate[0]}, {coordinate[1]}
+      </Coordinates>
 
       <MoveButton onClick={onMoveClick} />
 
@@ -72,11 +73,11 @@ const Container = styled.div.attrs({
 `
 const Coordinates = styled.div`
   position: absolute;
-  top: 0;
+  top: -17px;
   left: 0;
-  background-color: skyblue;
+  background-color: pink;
   width: 100px;
-  `
+`
 
 const MoveButton = styled.button.attrs({
   type: 'button',
