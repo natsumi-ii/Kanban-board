@@ -22,20 +22,6 @@ export function Card({
 }) {
   const [drag, setDrag] = useState(false)
 
-  // hint
-  // useStateを使う
-
-  // const clickButton = e => {
-  //   // console.log(e.getBoundingClientRect().top) //←ブラウザ上のx,y位置を取得したい
-  //   console.log(e.clientX, e.clientY) //←マウス座標は取得できている
-  // }
-
-  // const test = (e) => {
-  //   console.log('test', e)
-  //   // console.log(e.getBoundingClientRect().top) //←ブラウザ上のx,y位置を取得したい
-  //   console.log(e.clientX, e.clientY) //←マウス座標は取得できている
-  // }
-
   return (
     <Container
       style={{

@@ -60,28 +60,6 @@ export function Column({
     onCardDragStart?.(id)
   }
 
-  // この書き方もできる
-  // const [resultNumber, setResultNumber] = useState('green')
-  // useEffect(() => {
-  //   console.log('useEffect')
-  //   if (cards?.length === 0) {
-  //     setResultNumber('#cccccc')
-  //   } else if (cards?.length === 1) {
-  //     setResultNumber('black')
-  //   } else {
-  //     setResultNumber('yellow')
-  //   }
-  // }, [cards])
-
-  // infinite loop!!!!
-  // const changeHandler = (card) => {
-  //   if (card === 0) {
-  //     setResultNumber('#cccccc')
-  //   } else if (card === 1) {
-  //     setResultNumber('black')
-  //   }
-  // }
-
   const getColor = length => {
     if (length === 0) {
       return '#cccccc'
@@ -114,14 +92,12 @@ export function Column({
         <Loading />
       ) : (
         <>
-          {/* <div style={{background: resultNumber}}>{cards.length} results</div> */}
+          {' '}
           {filterValue && (
             <ResultCount style={{ color: getColor(cards.length) }}>
               {cards.length} results
             </ResultCount>
           )}
-          {/* <div style={{background: getColor(cards.length)}}>{cards.length} results</div> */}
-
           <VerticalScroll>
             {cards.map(({ id, text }, i) => (
               <Card.DropArea
