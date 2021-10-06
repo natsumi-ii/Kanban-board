@@ -74,7 +74,8 @@ const Coordinates = styled.div`
   position: absolute;
   top: 0;
   left: 0;
-  background-color: blue;
+  background-color: skyblue;
+  width: 100px;
   `
 
 const MoveButton = styled.button.attrs({
