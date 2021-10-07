@@ -49,18 +49,29 @@ class SampleCrypto extends Crypto {
 
 class HogeCrypto extends Crypto {
 
+  constructor(rawData) {
+    super(rawData)
+
+    this.encodeMessage = this.encode(rawData)
+    this.decodeMessage = this.decode(rawData)
+  }
   // データはアルファベットのみ
   // abc -> a1b1c1 に変換する
   // aabbe -> a2b2e に変換する
   // kdkd -> k1d1k1d1に変換する
-  decode() {}
+  
+  encode() {
+    const encodedMessage = this.encodeMessage.split('')
+  }
 
-  encode() {}
+  decode() {
+    const decodedMessage = this.decode
+  }
 }
 
 
 const c = new Crypto('message example')
-c.info()
+// c.info()
 
 const sc = new SampleCrypto('message example')
 sc.info()
