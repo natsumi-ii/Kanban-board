@@ -33,14 +33,20 @@ class SampleCrypto extends Crypto {
 
   decode() {
     // decodeされた値を返す
-    const decodedMessage = this.encodedMessage.split('').map(char => char === '-' ? 'm' : char).join('')
+    const decodedMessage = this.encodedMessage
+      .split('')
+      .map(char => (char === '-' ? 'm' : char))
+      .join('')
     // console.log('data is', decodedMessage)
     return decodedMessage
   }
 
   encode() {
     // encodeされた値を返す
-    const encodedMessage = this.rawData.split('').map(char => char === 'm' ? '-' : char).join('')
+    const encodedMessage = this.rawData
+      .split('')
+      .map(char => (char === 'm' ? '-' : char))
+      .join('')
     // console.log('data is', encodedMessage)
 
     return encodedMessage
@@ -48,7 +54,6 @@ class SampleCrypto extends Crypto {
 }
 
 class HogeCrypto extends Crypto {
-
   constructor(rawData) {
     super(rawData)
 
@@ -59,7 +64,7 @@ class HogeCrypto extends Crypto {
   // abc -> a1b1c1 に変換する
   // aabbe -> a2b2e に変換する
   // kdkd -> k1d1k1d1に変換する
-  
+
   encode() {
     const encodedMessage = this.encodeMessage.split('')
   }
@@ -68,7 +73,6 @@ class HogeCrypto extends Crypto {
     const decodedMessage = this.decode
   }
 }
-
 
 const c = new Crypto('message example')
 // c.info()
