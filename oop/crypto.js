@@ -66,11 +66,55 @@ class HogeCrypto extends Crypto {
   // kdkd -> k1d1k1d1に変換する
 
   encode() {
-    const encodedMessage = this.encodeMessage.split('')
+    const txt = this.rawData
+    const array = txt.split('')
+
+    let current = array[0]
+    let prev = null
+    let seqLen = 0
+    let answer = ''
+    for (const char of array) {
+      prev = current
+      current = char
+      // console.log('done')
+
+      if (prev !== current && !!prev) {
+        answer += prev
+        answer += seqLen.toString()
+        seqLen = 1
+        // console.log('add')
+      } else if (prev === current) {
+        seqLen += 1
+        // console.log('next')
+      }
+    }
+    answer += current
+    // console.log('update')
+    answer += seqLen.toString()
+    const encodedMessage = answer
+
+    return encodedMessage
   }
 
   decode() {
-    const decodedMessage = this.decode
+    const txt = this.encodedMessage
+    const array = txt.split('')
+    let answer = ''
+    let word = ''
+    let num = null
+
+    for (let i = 0; i < array.length; i++) {
+      // console.log(`Chorus lyrics for "Happy": ${chorus.repeat(27)}`);
+      word = array[i]
+      num = Number(array[++i])
+      // console.log(word)
+      // console.log(num)
+      answer += word.repeat(num)
+      // console.log(answer)
+    }
+    const decodedMessage = answer
+
+    return decodedMessage
   }
 }
 
@@ -78,4 +122,9 @@ const c = new Crypto('message example')
 // c.info()
 
 const sc = new SampleCrypto('message example')
-sc.info()
+// sc.info()
+
+const ssc = new HogeCrypto('message example')
+ssc.info()
+
+// const txt = this.encodedMessage

@@ -33,6 +33,7 @@ class LiberalArtsStudent extends Student {
   sleep() {
     console.log('I sleep 9 hours every day')
   }
+  nnnn
 }
 
 // Studentを継承する
