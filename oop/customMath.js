@@ -1,6 +1,5 @@
 class CustomMath {
-  constructor() {
-  }
+  constructor() {}
 
   random() {
     // Math.random()は使っちゃダメ
@@ -9,7 +8,6 @@ class CustomMath {
     // ex) 28324821
   }
 }
-
 
 const cm = new CustomMath()
 cm.random()
