@@ -2,6 +2,7 @@ class CustomHTML {
   // tag: 'div', 'p', 'li'とか
   constructor(tag) {
     // TODO: initializeする
+    this.tag = tag
   }
 
   generate() {
@@ -10,5 +11,10 @@ class CustomHTML {
     // p -> <p></p>
     // div -> <div></div>
     // に変換する
+    const gene = `<${this.tag}></${this.tag}>`
+    console.log(gene)
   }
 }
+
+let div = new CustomHTML('div')
+div.generate()

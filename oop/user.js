@@ -1,9 +1,9 @@
 class User {
   constructor(name, id, age, gender) {
-    this.name = name;
-    this.id = id;
-    this.age = age;
-    this.gender = gender;
+    this.name = name
+    this.id = id
+    this.age = age
+    this.gender = gender
   }
 
   static create() {
@@ -30,12 +30,7 @@ class User {
   }
 }
 
-
 const user = User.create()
 
 // const userList = User.createList(users)
 // console.log(userList)
-
-
-
-
