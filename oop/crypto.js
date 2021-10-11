@@ -60,6 +60,7 @@ class HogeCrypto extends Crypto {
     this.encodeMessage = this.encode(rawData)
     this.decodeMessage = this.decode(rawData)
   }
+
   // データはアルファベットのみ
   // abc -> a1b1c1 に変換する
   // aabbe -> a2b2e に変換する
@@ -123,8 +124,9 @@ const c = new Crypto('message example')
 
 const sc = new SampleCrypto('message example')
 // sc.info()
-
 const ssc = new HogeCrypto('message example')
 ssc.info()
 
 // const txt = this.encodedMessage
+
+sc.info()
