@@ -98,7 +98,7 @@ class CustomArray extends CustomObject {
     // TODO: customLengthというプロパティをイニシャライズ時に割り当てる
   }
 
-  add(number) {
+  add(customArrayInstance) {
     // arrayの足し算の結果を返す
     const add = this.data + parseInt(number)
     console.log(add)
@@ -122,5 +122,4 @@ b.toString(2)
 c.stringify()
 c.length()
 c.add('add')
-
 
