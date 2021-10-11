@@ -31,9 +31,9 @@ export type ReqAndRes = {
 
   'DELETE /v1/cards': {
     req: {
-     id: CardID
+      id: CardID
     }
-     res: {}
+    res: {}
   }
 
   'GET /v1/cardsOrder': {
