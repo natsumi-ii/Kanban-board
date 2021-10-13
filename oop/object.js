@@ -75,12 +75,13 @@ class CustomString extends CustomObject {
 }
 
 class CustomArray extends CustomObject {
+  // dataにはarrayが入る
   constructor(data) {
     super(data)
 
-    this.data = parseInt(data)
+    this.data = data
     // TODO: customLengthというプロパティをイニシャライズ時に割り当てる
-    this.customLength = customLength
+    this.customLength = data.length
   }
 
   add(customArrayInstance) {
@@ -95,13 +96,16 @@ class CustomArray extends CustomObject {
 let sample = new CustomObject(3)
 // let a = new Array()
 // let a = []
-let b = new CustomNumber(6)
+let b = new CustomNumber(['a', 'b'])
 let c = new CustomString('data')
-let d = new CustomArray(3)
-let e = new CustomArray(7)
+let d = new CustomArray([1,2,3])
+let e = new CustomArray([{}, {}])
 let f = d.add(e)
 
+const a = d.customLength
+d.add()
 console.log('new instance is', f)
+
 
 // sample.stringify()
 // b.add(2)
