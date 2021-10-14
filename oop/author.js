@@ -1,9 +1,8 @@
 class Publisher {
-  constructor() {
+  constructor(authors, name) {
     // TODO: authors, nameをconstructorの引数にして、propertyに代入する
-    this.authors = this.authors
-    this.name = new Author()
-    console.log('Author is', this.name)
+    this.authors = authors
+    this.name = name
   }
 }
 
@@ -11,26 +10,34 @@ class Author {
   constructor(name, books) {
     // TODO: name, books をconstructorの引数にして、propertyに代入する
     this.name = name
-    this.books = books
-    console.log('name is', this.name)
-    console.log('books is', this.books)
-  }
+    this.books = books  }
 }
 
 class Book {
-  constructor(data) {
+  constructor(title) {
     // TODO: title, dateをconstructorの引数にして、propertyに代入する
     // this.title = 'hogehoge'
     // const obj = {}
     // this.books = data.forEach(data => {
     //   obj[title] = data
     // })
-    this.title = data
-    console.log('title is', this.title)
+    this.title = title
   }
 }
-a
-let a = new Book('book1')
+
+let book1 = new Book('book1')
+let book2 = new Book('book2')
+let book3 = new Book('book3')
+let book4 = new Book('book4')
+
+let author1 = new Author('西尾維新',[book1, book2])
+let author2 = new Author('夏目漱石', [book3, book4])
+let publisher = new Publisher([author1, author2], '講談社')
+
+console.log(publisher)
+console.log(publisher.authors[0].books)
+console.log(publisher.authors[1].books[1])
+console.log(publisher.authors[1].books[1].title)
 
 // TODO: publisher, author, bookのデータを複数作り、表示させる。このとき、各データが関連を持つように設定する
 // 出力例
