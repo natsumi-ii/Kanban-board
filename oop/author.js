@@ -3,8 +3,9 @@ class Publisher {
     this.authors = authors
     this.name = name
 
-    // TODO: authorsの各authorに対して、publisherへの参照を持たせたい
-    // ex) Authorクラスの実装を参考に
+    for (const author of authors) {
+      author.publisher = this
+    }
   }
 }
 
@@ -38,13 +39,5 @@ let publisher = new Publisher([author1, author2], '講談社')
 
 console.log(book1.author.name)
 console.log(book3)
-// console.log(publisher.authors[0].books)
-// console.log(publisher.authors[1].books[1])
-// console.log(publisher.authors[1].books[1].title)
-
-// TODO: publisher, author, bookのデータを複数作り、表示させる。このとき、各データが関連を持つように設定する
-// 出力例
-// const pub = new Publisher()
-// pub.authors -> [{name: 夏目漱石}, {name: 西尾維新}]
-// pub.authors[1].books -> [{title: '化物語1'}, {title: '化物語2'}]
-// pub.authors[1].books[0] -> {title: '化物語1'}
+console.log('author1 is', author1)
+console.log(author1.publisher.name)
